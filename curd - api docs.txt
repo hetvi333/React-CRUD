@@ -1,0 +1,31 @@
+/users/
+method : get 
+to get all users list
+
+
+/users/
+method : post
+to create new user
+body should be 
+{ 
+   name : "sdfsdfsdf",
+   email: "sdfsdfsdfs",
+   city: "sdfsdf"
+}
+
+
+/users/:id
+method : delete
+to delete user by id
+
+
+/users/:id
+method : put 
+to update user data by id
+body should be 
+{ 
+   name : "sdfsdfsdf",
+   email: "sdfsdfsdfs",
+   city: "sdfsdf"
+}
+
