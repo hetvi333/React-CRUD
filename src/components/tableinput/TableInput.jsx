@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./TableInput.module.css";
 import axios from "axios";
 
-function TableInput() {
+function TableInput({ setInputChange, inputChange }) {
   // Initializing state variables
   const [name, setName] = useState("");
   const [id, setId] = useState("");
@@ -11,12 +11,10 @@ function TableInput() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios
-      .get("http://localhost:3000/users/")
-      .then((response) => {
-        setId(response.data.length + 1);
-        console.log(response.data.length);
-      });
+    await axios.get("http://localhost:3000/users/").then((response) => {
+      setId(response.data.length + 1);
+      console.log(response.data.length);
+    });
     await axios
       .post("http://localhost:3000/users/", {
         name: name,
@@ -25,13 +23,14 @@ function TableInput() {
       })
       .then((response) => {
         console.log(response?.data);
+        setInputChange(!inputChange);
       })
       .catch((error) => console.log(error));
   };
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
-        <table border={1} className={style.input_table}>
+        <table className={style.input_table}>
           <thead>
             <tr>
               <td>

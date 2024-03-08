@@ -1,9 +1,12 @@
 import axios from "axios";
 import style from "./Table.module.css";
 import React, { useEffect, useState } from "react";
-import { apiRoutes } from "../../utils/constants";
 
-function Table() {
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaUpRightFromSquare } from "react-icons/fa6";
+
+function Table({inputChange}) {
   const [data, setData] = useState([]); // usestate for manage and set the data fetched from API
   const [edit, setEdit] = useState(-1);
 
@@ -20,11 +23,6 @@ function Table() {
       console.log("Error: error while getting users -", error);
     }
   };
-
-  useEffect(() => {
-    // use useEffect for run the code first time after the component is rendered
-    getUsers();
-  }, []);
 
   const editHandler = (id, name, email, city) => {
     setEdit(id);
@@ -56,9 +54,14 @@ function Table() {
     });
   };
 
+  useEffect(() => {
+    // use useEffect for run the code first time after the component is rendered
+    getUsers();
+  }, [inputChange]);
+
   return (
     <div className={style.container}>
-      <table border={1}>
+      <table className={style.list_container}>
         <thead>
           <tr>
             <th>Index</th>
@@ -73,7 +76,7 @@ function Table() {
           {data.map((user, index) =>
             user._id === edit ? (
               <tr key={index}>
-                <td>{index}</td>
+                <td>{index + 1}</td>
                 <td>
                   <input
                     type="text"
@@ -96,7 +99,9 @@ function Table() {
                   />
                 </td>
                 <td>
-                  <button onClick={updateHandler}>Update</button>
+                  <button onClick={updateHandler} className={style.updatebtn}>
+                    <FaUpRightFromSquare />
+                  </button>
                 </td>
               </tr>
             ) : (
@@ -107,18 +112,18 @@ function Table() {
                 <td>{user.city}</td>
                 <td>
                   <button
-                    className={style.primary}
+                    className={style.editbtn}
                     onClick={() =>
                       editHandler(user._id, user.name, user.email, user.city)
                     }
                   >
-                    Edit
+                    <FaEdit />
                   </button>
                   <button
-                    className={style.seconadary}
+                    className={style.deletebtn}
                     onClick={() => deleteHandler(user._id)}
                   >
-                    Delete
+                    <RiDeleteBin6Line />
                   </button>
                 </td>
               </tr>

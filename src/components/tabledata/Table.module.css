@@ -1,29 +1,60 @@
-table th,
+.list_container,
+.list_container th,
+.list_container td {
+  border: 1px solid white;
+  border-collapse: separate;
+}
+
+.list_container th,
+.list_container td {
+  background-color: #f1eaff;
+  border-style: outset;
+}
+
+.list_container th,
 td {
   padding: 10px;
   text-align: center;
 }
 
-table {
+.list_container th {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.list_container td {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.list_container {
   width: 100%;
   text-align: center;
 }
 
-button.primary {
-  padding: 6px 23px;
-  background-color: lightskyblue;
-  color: #fff;
+button.updatebtn {
+  padding: 1px 15px;
+  background-color: transparent;
+  color: green;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 15px;
-  margin-right: 1rem;
+  font-size: 22px;
 }
 
-button.seconadary {
-  padding: 6px 20px;
-  background-color: green;
-  color: #fff;
+button.editbtn {
+  padding: 1px 15px;
+  background-color: transparent;
+  color: gray;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 22px;
+}
+
+button.deletebtn {
+  padding: 1px 15px;
+  background-color: transparent;
+  color: red;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
 }

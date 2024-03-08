@@ -1,5 +1,26 @@
+.input_table,
+.input_table th,
+.input_table td {
+  border: 1px solid white;
+  border-collapse: separate;
+}
+
+.input_table th,
+.input_table td {
+  background-color: #E5D4FF;
+  border-style: outset;
+}
+
 .input_table {
   margin-bottom: 20px;
+}
+
+.input_table input {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 15px;
+  /* font-weight: 600; */
 }
 
 .btn {
